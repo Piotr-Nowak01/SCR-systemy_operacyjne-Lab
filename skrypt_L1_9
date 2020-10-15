@@ -17,7 +17,7 @@ mv plik.txt plik123.txt
 echo ""
 ls
 echo ""
-echo "Zmiana uprawnien."
+echo "Zmiana uprawnien"
 ls -l
 echo""
 chmod 700 plik123.txt
