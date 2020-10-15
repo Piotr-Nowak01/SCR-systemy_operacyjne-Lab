@@ -5,7 +5,7 @@ nazwa2=$2
 nazwa3=$3
 ls
 echo""
-echo " Tworzenie pliku."
+echo " Tworzenie pliku"
 touch $nazwa
 echo ""
 ls
@@ -20,7 +20,7 @@ mv $nazwa $nazwa3
 echo ""
 ls
 echo ""
-echo "Zmiana uprawnien."
+echo "Zmiana uprawnien"
 ls -l
 echo ""
 echo "Czy chcesz zmienic uprawnienia pliku? tak - 1 nie - 0"
