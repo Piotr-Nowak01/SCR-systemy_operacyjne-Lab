@@ -1,0 +1,1 @@
+Zostal utworzony potok FIFO za pomoca komendy mknod FIFO p. Nastepnie na 2 terminalach uruchomiono komende cat FIFO, a na kolejnych 2 terminalach uruchomiono komende cat > FIFO. Podczas wpisywania danych na terminalach z uruchomiona komenda cat > FIFO dane byly wpisywane na zmiane do terminali z uruchomiona komenda cat FIFO.
