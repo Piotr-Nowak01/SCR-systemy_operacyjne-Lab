@@ -7,7 +7,7 @@ trap " echo SIGTRAP" TRAP
 trap " echo SIGABRT" ABRT
 trap " echo SIGBUS" BUS
 trap " echo SIGFPE" FPE
-trap " echo DIGKILL" KILL
+trap " echo SIGKILL" KILL
 trap " echo SIGUSR!" USR1
 trap " echo SIGSEGV" SEGV
 trap " echo SIGUSR2" USR2
