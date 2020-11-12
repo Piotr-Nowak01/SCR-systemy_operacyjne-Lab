@@ -25,7 +25,7 @@ int main(){
 	req.tv_sec=0;
 	req.tv_nsec=milis*1000000L;
 	signal (SIGUSR1,s1);
-	signal (SIGUSR2,)s2;
+	signal (SIGUSR2,s2;
 //	signal (SIGTERM,s3);
 	signal (SIGALRM,s4);
 	while (1)
