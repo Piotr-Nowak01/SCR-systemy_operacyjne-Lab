@@ -25,9 +25,9 @@ int main(){
 	req.tv_sec=0;
 	req.tv_nsec=milis*1000000L;
 	signal (SIGUSR1,s1);
-	signal (SIGTERM,)s2;
-//	signal (SIGALRM,s3);
-	signal (SIGUSR2,s4);
+	signal (SIGUSR2,)s2;
+//	signal (SIGTERM,s3);
+	signal (SIGALRM,s4);
 	while (1)
 	{
 		i++;
@@ -35,3 +35,8 @@ int main(){
 	}
 return 0;
 }
+/*
+Po podaniu sygnalu SIGUSR1 do programu, program wyswietla komunikat i konczy swoja prace.
+Po podaniu sygnalu SIGALRM program ignoruje podany sygnal.
+Po podaniu sygnalu SIGUSR2 program wyswietla komunikat i kontynuuje swoja prace.
+*/
