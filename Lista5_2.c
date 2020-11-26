@@ -37,6 +37,8 @@ int main(int argc, char *argv[])
 				return 3;
 			}		
 		} 
+		sleep(1);
+		close(fd[1]);
 		close(in_fd);
 	}
 	else 	//blad
