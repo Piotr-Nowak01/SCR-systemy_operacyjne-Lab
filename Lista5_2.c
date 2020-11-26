@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	pid=fork(); //tworzenie dziecka
 	if(pid==0) //dziecko
 	{	
-		close(fd[1]);
+		close(fd[1]);  //zamkniecie zapisu
 		close(0);
 		dup(fd[0]);
 		close(fd[0]);
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	}
 	else if( pid>0) //rodzic
 	{
-		close(fd[0]);
+		close(fd[0]);  //zamkniecie odczytu
 		if ((in_fd=open(argv[1], O_RDONLY))<0)  // jesli podczas otwierania plikow wystapil blad
 		{
 			fprintf(stderr, "Blad\n");
