@@ -4,7 +4,7 @@
 #define buf_size 256
 int main(int argc, char *argv[])
 {
-	pid_t pid; //tworzenie pipe'a
+	pid_t pid; 
 	int fd[2], in_fd,n;
 	char buf[buf_size];
 	if ( pipe(fd) < 0 ) //sprawdzanie czy stworzono pipe'a
