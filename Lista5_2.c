@@ -4,34 +4,34 @@
 #define buf_size 256
 int main(int argc, char *argv[])
 {
-	pid_t pid;
+	pid_t pid; //tworzenie pipe'a
 	int fd[2], in_fd,n;
 	char buf[buf_size];
-	if ( pipe(fd) < 0 )
+	if ( pipe(fd) < 0 ) //sprawdzanie czy stworzono pipe'a
 		{
 			fprintf(stderr, "Blad\n");
 			return 1;
 		}
-	pid=fork();
+	pid=fork(); //tworzenie dziecka
 	if(pid==0) //dziecko
 	{	
 		close(fd[1]);
 		close(0);
 		dup(fd[0]);
 		close(fd[0]);
-		execlp("display","display","-",NULL);
+		execlp("display","display","-",NULL); 	//wyswietlanie na ekranie obrazka
 	}
 	else if( pid>0) //rodzic
 	{
 		close(fd[0]);
-		if ((in_fd=open(argv[1], O_RDONLY))<0)
+		if ((in_fd=open(argv[1], O_RDONLY))<0)  // jesli podczas otwierania plikow wystapil blad
 		{
 			fprintf(stderr, "Blad\n");
 			return 2;
 		}
-		while ((n=read(in_fd, &buf, buf_size))>0)
+		while ((n=read(in_fd, &buf, buf_size))>0) //wczytywanie danych
 		{
-			if (write(fd[1], &buf, n)<0)
+			if (write(fd[1], &buf, n)<0) //jesli podczas zapisywania wystapil blad
 			{
 				fprintf(stderr, "Blad\n");
 				return 3;
