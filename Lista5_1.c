@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 		}
 		while ((n=read(in_fd, &buf, buf_size))>0) // gdy dane sa wczytywane
 		{
-			if (write(fd[1], &buf, n)<0) 		// jesli wystapil blad
+			if (write(fd[1], &buf, n)<0) 		// jesli wystapil blad podczas zapisywania
 			{
 				fprintf(stderr, "Blad\n");
 				return 3;
