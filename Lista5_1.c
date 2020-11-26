@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	pid=fork(); //tworzenie dziecka
 	if(pid==0) //dziecko
 	{	
-		close(fd[1]);
+		close(fd[1]); //zamkniecie zapisu
 		while (read(fd[0],&buf,1)>0) 	//wyswietlanie na terminalu
 		{
 			write(STDOUT_FILENO, "#", 1);
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	}
 	else if( pid>0) //rodzic
 	{
-		close(fd[0]);
+		close(fd[0]);  //zamkniecie odczytu
 		if ((in_fd=open(argv[1], O_RDONLY))<0) 	 //jesli nie otwarto plikow to blad
 		{
 			fprintf(stderr, "Blad\n");
@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
 				return 3;
 			}		
 		} 
+		close(fd[1]);
 		close(in_fd);
 	}
 	else 	//blad
