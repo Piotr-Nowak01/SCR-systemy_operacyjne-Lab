@@ -5,11 +5,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
-void blad(const char* wiadomosc)
-{
-	fprintf(stderr, "%s \n", wiadomosc);
-	exit -1;
-}
 int main()
 {
 	int fd_file, fd_area;
@@ -20,7 +15,8 @@ int main()
 	int i=0;
 	if ((fd_area=open("pamiec.txt",O_RDWR))<0)
 	{
-		blad("Blad podczas otwierania pliku uzywanego do mapowania pamieci");
+		fprintf(stderr, "%s \n", wiadomosc);
+		exit -1;
 	}
 	while (1)
 	{
@@ -34,17 +30,20 @@ int main()
 		}
 		if ((fd_file=open(nazwa,O_RDONLY))<0)
 		{
-			blad("Nie udalo sie odczytac pliku.\n");
+			fprintf(stderr, "%s \n", wiadomosc);
+			exit -1;
 		}
 		if (fstat(fd_file,&status)==-1)
 		{
-			blad("Blad przy pozyskiwaniu statystyk pliku");
+			fprintf(stderr, "%s \n", wiadomosc);
+			exit -1;
 		}
 		adres=mmap(NULL, status.st_size+zlicz, PROT_WRITE | PROT_READ , MAP_SHARED, fd_area, 0);
 		ftruncate(fd_area,status.st_size+zlicz);
 		if(adres==MAP_FAILED)
 		{
-			blad("Blad przy mapowaniu pliku");
+			fprintf(stderr, "%s \n", wiadomosc);
+			exit -1;
 		}
 		i=0;
 		while((znaki=read(fd_file,buff,1))>0)
