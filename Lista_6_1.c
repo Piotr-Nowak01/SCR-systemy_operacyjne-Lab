@@ -33,23 +33,26 @@ int main()
 			fprintf(stderr, "Nie udalo sie otworzyc pliku\n");
 			exit -1;
 		}
-		if (fstat(fd_file,&status)==-1)
+		else
 		{
-			fprintf(stderr, "Nie udalo sie uzyskac statusu pliku \n";
-			exit -1;
-		}
-		adres=mmap(NULL, status.st_size+zlicz, PROT_WRITE | PROT_READ , MAP_SHARED, fd_area, 0);
-		ftruncate(fd_area,status.st_size+zlicz);
-		if(adres==MAP_FAILED)
-		{
-			fprintf(stderr, "Blad podczas mapowania\n");
-			exit -1;
-		}
-		i=0;
-		while((znaki=read(fd_file,buff,1))>0)
-		{
-			adres[zlicz+i]=buff[0];
-			i++;
+			if (fstat(fd_file,&status)==-1)
+			{
+				fprintf(stderr, "Nie udalo sie uzyskac statusu pliku \n");
+				exit -1;
+			}
+			adres=mmap(NULL, status.st_size+zlicz, PROT_WRITE | PROT_READ , MAP_SHARED, fd_area, 0);
+			ftruncate(fd_area,status.st_size+zlicz);
+			if(adres==MAP_FAILED)
+			{
+				fprintf(stderr, "Blad podczas mapowania\n");
+				exit -1;
+			}
+			i=0;
+			while((znaki=read(fd_file,buff,1))>0)
+			{
+				adres[zlicz+i]=buff[0];
+				i++;
+			}
 		}
 	}
 }
