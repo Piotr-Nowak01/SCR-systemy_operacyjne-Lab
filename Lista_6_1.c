@@ -10,7 +10,7 @@ int main()
 	int fd_file, fd_area;
 	char *adres, buff[1];
 	struct stat status;
-	int zlicz, znaki;
+	int zlicz;
 	char nazwa [100];
 	int i=0;
 	if ((fd_area=open("pamiec.txt",O_RDWR))<0)
@@ -48,7 +48,7 @@ int main()
 				exit -1;
 			}
 			i=0;
-			while((znaki=read(fd_file,buff,1))>0)
+			while(read(fd_file,buff,1)>0)
 			{
 				adres[zlicz+i]=buff[0];
 				i++;
